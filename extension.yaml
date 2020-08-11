@@ -7,6 +7,7 @@ version: 0.0.2  # Follow semver versioning
 specVersion: v1beta  # Version of the Firebase Extensions specification
 author:
   authorName: reev technologies
+  email: hello@reev.tech
   url: https://reev.tech
 # Friendly display name for your extension (~3-5 words)
 displayName: Twilio WhatsApp
@@ -33,31 +34,25 @@ billingRequired: false
 
 # In the `resources` field, list each of your extension's functions, including the trigger for each function.
 # Learn more in the docs: https://firebase.google.com/docs/extensions/alpha/ref-extension-yaml#resources-field
+roles:
+  - role: datastore.user
+    reason: Allows this extension to access Cloud Firestore to read and process added whatsapp messages documents.
+
 resources:
   - name: twilioWhatsApp
     type: firebaseextensions.v1beta.function
-    description: >-
-      HTTP request-triggered function that responds with a specified greeting message
+    description:
+      Processes document changes in the specified Cloud Firestore collection,
+      delivers whatsapp messaging using twilio, and updates the document with delivery status information.
     properties:
-      # LOCATION is a user-configured parameter value specified by the user during installation.
       location: ${LOCATION}
-      # httpsTrigger is used for an HTTP triggered function.
-      httpsTrigger: {}
-      runtime: "nodejs8"
+      eventTrigger:
+        eventType: providers/cloud.firestore/eventTypes/document.write
+        resource: projects/${PROJECT_ID}/databases/(default)/documents/${WA_COLLECTION}/{id}
 
 # In the `params` field, set up your extension's user-configured parameters.
 # Learn more in the docs: https://firebase.google.com/docs/extensions/alpha/ref-extension-yaml#params-field
 params:
-  - param: NODE
-    label: Realtime Database Node
-    description: >-
-      Hi there 👋 ! May we know which node do you want to read?
-      For example, "reports" or "sample-node"
-    type: string
-    default: WhatsApp-Messages
-    required: true
-    immutable: false
-
   - param: LOCATION
     label: Cloud Functions location
     description: >-
@@ -85,3 +80,39 @@ params:
     default: us-central1
     required: true
     immutable: true
+  
+  - param: WA_COLLECTION
+    label: WhatsApp messaging documents collection
+    description: >-
+      What is the path to the collection that contains the documents used to build and send the whatsapp messages?
+    type: string
+    default: messages
+    validationRegex: "^[^/]+(/[^/]+/[^/]+)*$"
+    validationErrorMessage: Must be a valid Cloud Firestore collection
+    required: true
+
+  - param: TWILIO_FROM_PHONENUMBER
+    label: Twilio FROM phone number
+    description: >-
+      The twilio registered phone number to use as the sender.
+    type: string
+    example: +1234567890
+    required: true
+
+  - param: TWILIO_ACCOUNT_SID
+    label: Twilio Account SID
+    description: >-
+      Twilio Registered Account SID. Used to authenticate requests.
+      For help refer to the [Official Twilio Documentation](https://www.twilio.com/docs/whatsapp/quickstart/node#gather-your-twilio-account-information)
+    type: string
+    example: ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    required: true
+
+  - param: TWILIO_AUTH_TOKEN
+    label: Twilio Auth Token
+    description: >-
+      Twilio Registered Auth Token. Used to authenticate requests.
+      For help refer to the [Official Twilio Documentation](https://www.twilio.com/docs/whatsapp/quickstart/node#gather-your-twilio-account-information)
+    type: string
+    example: YOUR_AUTH_TOKEN
+    required: true

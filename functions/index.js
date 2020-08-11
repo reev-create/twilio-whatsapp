@@ -11,15 +11,22 @@
  */
 
 const functions = require('firebase-functions');
+const admin = require('firebase-admin');
+admin.initializeApp();
 
-exports.greetTheWorld = functions.handler.https.onRequest((req, res) => {
-    // Here we reference a user-provided parameter (its value is provided by the user during installation)
-    const consumerProvidedGreeting = process.env.NODE;
+exports.twilioWhatsApp = functions.firestore
+    .document(`${process.env.WA_COLLECTION}/{messageID}`)
+    .onCreate((snap, context) => {
+        const new_document = snap.data();
+        const TWILIO_FROM_PHONENUMBER = process.env.TWILIO_FROM_PHONENUMBER;
+        const TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID;
+        const TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN;
 
-    // And here we reference an auto-populated parameter (its value is provided by Firebase after installation)
-    const instanceId = process.env.EXT_INSTANCE_ID;
+        console.log({
+            from: TWILIO_FROM_PHONENUMBER,
+            to: new_document.To,
+            body: new_document.body
+        });
 
-    const greeting = `${consumerProvidedGreeting} World from ${instanceId}`;
-
-    res.send(greeting);
-});
+        // perform desired operations ...
+    });

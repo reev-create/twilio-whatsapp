@@ -9,17 +9,13 @@ Learn more in the docs: https://firebase.google.com/docs/extensions/alpha/create
 Learn more about writing a POSTINSTALL.md file in the docs:
 https://firebase.google.com/docs/extensions/alpha/create-user-docs#writing-postinstall
 -->
+# Hi there 👋 !
 
-# See it in action
+This extension helps you send automated whatsapp messages to your users all made possible using the power of the Firebase Cloud Functions. Have any suggestions in mind? Feel free to [let us know](https://reev.tech/contact)
 
-You can test out this extension right away!
+# Configuration
 
-Visit the following URL:
-${function:greetTheWorld.url}
-
-# Using the extension
-
-When triggered by an HTTP request, this extension responds with the following specified greeting: "${param:GREETING} World from ${param:EXT_INSTANCE_ID}".
+Extension installed at ${param:WA_COLLECTION} of Firestore. The Extension Instance ID is ${param:EXT_INSTANCE_ID}
 
 To learn more about HTTP functions, visit the [functions documentation](https://firebase.google.com/docs/functions/http-events).
 
