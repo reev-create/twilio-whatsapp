@@ -3,7 +3,7 @@
 # install using firebase ext:install . --project=hugo-website-reev
 
 name: twilio-whatsapp  # Identifier for your extension
-version: 0.0.4  # Follow semver versioning
+version: 0.0.5  # Follow semver versioning
 specVersion: v1beta  # Version of the Firebase Extensions specification
 author:
   authorName: reev technologies

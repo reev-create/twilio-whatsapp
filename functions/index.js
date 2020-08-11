@@ -45,8 +45,7 @@ exports.twilioWhatsApp = functions.firestore
             }).catch((E) => {
                 return admin.firestore().runTransaction((transaction) => {
                     transaction.update(snap.ref, {
-                        delivery: "ERROR",
-                        status: E
+                        delivery: "ERROR"
                     });
                     return Promise.resolve();
                 });
