@@ -3,7 +3,7 @@
 # install using firebase ext:install . --project=hugo-website-reev
 
 name: twilio-whatsapp  # Identifier for your extension
-version: 0.0.5  # Follow semver versioning
+version: 0.0.6  # Follow semver versioning
 specVersion: v1beta  # Version of the Firebase Extensions specification
 author:
   authorName: reev technologies
@@ -23,7 +23,7 @@ sourceUrl: https://github.com/reev-create/twilio-whatsapp
 
 # Specify whether a paid-tier billing plan is required to use your extension.
 # Learn more in the docs: https://firebase.google.com/docs/extensions/alpha/ref-extension-yaml#billing-required-field
-billingRequired: false
+billingRequired: true
 
 # In an `apis` field, list any Google APIs (like Cloud Translation, BigQuery, etc.)
 # required for your extension to operate.
