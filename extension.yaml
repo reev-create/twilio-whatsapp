@@ -1,10 +1,13 @@
 # Learn detailed information about the fields of an extension.yaml file in the docs:
 # https://firebase.google.com/docs/extensions/alpha/ref-extension-yaml
+# install using firebase ext:install . --project=hugo-website-reev
 
 name: twilio-whatsapp  # Identifier for your extension
 version: 0.0.2  # Follow semver versioning
 specVersion: v1beta  # Version of the Firebase Extensions specification
-
+author:
+  authorName: reev technologies
+  url: https://reev.tech
 # Friendly display name for your extension (~3-5 words)
 displayName: Twilio WhatsApp
 
@@ -45,13 +48,13 @@ resources:
 # In the `params` field, set up your extension's user-configured parameters.
 # Learn more in the docs: https://firebase.google.com/docs/extensions/alpha/ref-extension-yaml#params-field
 params:
-  - param: GREETING
-    label: Greeting for the world
+  - param: NODE
+    label: Realtime Database Node
     description: >-
-      What do you want to say to the world?
-      For example, Hello world? or What's up, world?
+      Hi there 👋 ! May we know which node do you want to read?
+      For example, "reports" or "sample-node"
     type: string
-    default: Hello
+    default: WhatsApp-Messages
     required: true
     immutable: false
 

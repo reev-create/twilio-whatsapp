@@ -13,13 +13,13 @@
 const functions = require('firebase-functions');
 
 exports.greetTheWorld = functions.handler.https.onRequest((req, res) => {
-  // Here we reference a user-provided parameter (its value is provided by the user during installation)
-  const consumerProvidedGreeting = process.env.GREETING;
+    // Here we reference a user-provided parameter (its value is provided by the user during installation)
+    const consumerProvidedGreeting = process.env.NODE;
 
-  // And here we reference an auto-populated parameter (its value is provided by Firebase after installation)
-  const instanceId = process.env.EXT_INSTANCE_ID;
+    // And here we reference an auto-populated parameter (its value is provided by Firebase after installation)
+    const instanceId = process.env.EXT_INSTANCE_ID;
 
-  const greeting = `${consumerProvidedGreeting} World from ${instanceId}`;
+    const greeting = `${consumerProvidedGreeting} World from ${instanceId}`;
 
-  res.send(greeting);
+    res.send(greeting);
 });
