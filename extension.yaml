@@ -3,7 +3,7 @@
 # install using firebase ext:install . --project=hugo-website-reev
 
 name: twilio-whatsapp  # Identifier for your extension
-version: 0.0.2  # Follow semver versioning
+version: 0.0.4  # Follow semver versioning
 specVersion: v1beta  # Version of the Firebase Extensions specification
 author:
   authorName: reev technologies
@@ -14,7 +14,7 @@ displayName: Twilio WhatsApp
 
 # Brief description of the task your extension performs (~1 sentence)
 description: >-
-  Send WhatsApp messages based on the changes in Realtime Database Node.
+  Send WhatsApp messages based on the changes in Cloud Firestore collection.
 
 license: Apache-2.0  # https://spdx.org/licenses/
 
