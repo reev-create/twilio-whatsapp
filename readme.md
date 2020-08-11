@@ -4,7 +4,7 @@
 	<p>
 		<p>
 			<sup>
-				<a href="reev.tech">by reev technologies</a>
+				powered by <a href="https://reev.tech">reev technologies</a>
 			</sup>
 		</p>
 	</p>
