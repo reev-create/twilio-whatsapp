@@ -43,6 +43,7 @@ exports.twilioWhatsApp = functions.firestore
                     return Promise.resolve();
                 });
             }).catch((E) => {
+                console.log(E);
                 return admin.firestore().runTransaction((transaction) => {
                     transaction.update(snap.ref, {
                         delivery: "ERROR"
