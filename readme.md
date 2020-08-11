@@ -1,5 +1,5 @@
 <div align="center">
-	<img style="object-fit:contain" height="350" src="https://dev.reev.tech/assets/favicon.png" alt="reev technologies">
+	<img style="object-fit:contain" height="100" src="https://dev.reev.tech/assets/favicon.png" alt="reev technologies">
 	<br>
 	<p>
 		<p>
@@ -7,10 +7,7 @@
 				<a href="reev.tech">by reev technologies</a>
 			</sup>
 		</p>
-		<br>
-		<br>
 	</p>
-	<br>
 	<br>
 </div>
 
