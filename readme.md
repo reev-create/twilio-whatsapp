@@ -17,3 +17,12 @@
 	<a href="https://facebook.com/reevtechnologies">Facebook</a>&nbsp;&nbsp;&nbsp;
 	<a href="https://instagram.com/reevtechnologies">Instagram</a>
 </p>
+
+Here's a basic example document write that would trigger this extension:
+
+```js
+admin.firestore().collection('messages').add({
+  to: '+1234567890',
+  message: "Hello from Firebase!",
+})
+```

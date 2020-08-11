@@ -25,7 +25,7 @@ exports.twilioWhatsApp = functions.firestore
         console.log({
             from: TWILIO_FROM_PHONENUMBER,
             to: new_document.To,
-            body: new_document.body
+            body: new_document.message
         });
 
         // perform desired operations ...
